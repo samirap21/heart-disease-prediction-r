@@ -1,0 +1,19 @@
+
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+.Renviron
+.Rprofile
+
+# Temporary files
+*.tmp
+*.log
+
+# Personal or private files
+.DS_Store
+Thumbs.db
+
+
+# Dataset excluded until redistribution rights are verified
+data/heart_disease.csv
