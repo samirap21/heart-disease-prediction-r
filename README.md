@@ -1,0 +1,112 @@
+# Heart Disease Prediction Using Logistic Regression in R
+
+## Project Overview
+
+This project investigates the use of Logistic Regression to predict the presence of heart disease from patient health attributes. It demonstrates a reproducible supervised machine learning workflow using R, including data preprocessing, classification, evaluation, and cross-validation.
+
+**Technologies:** R, RStudio, Logistic Regression, ggplot2, Statistical Analysis, Machine Learning
+
+## Dataset
+
+The dataset contains 302 observations and 14 variables, including 13 predictors and one binary target variable.
+
+Predictors include age, sex, chest pain type, resting blood pressure, cholesterol, fasting blood sugar, electrocardiographic measurements, maximum heart rate, exercise-induced angina, ST depression, ST slope, number of major vessels, and thalassemia test category.
+
+**Target:** `num`
+
+- `0` — No heart disease
+- `1` — Presence of heart disease
+
+**Class distribution:**
+- No heart disease: 163 observations
+- Heart disease: 139 observations
+
+Dataset source and redistribution permissions: To be confirmed before public release.
+
+## Methodology
+
+1. Loaded and inspected the dataset for missing values and feature types.
+2. Created a stratified 80/20 training and testing split.
+3. Handled missing numeric values using training-set medians and missing categorical values using training-set modes.
+4. Encoded categorical predictors as factors and standardised numeric features using training-set statistics.
+5. Trained a binary Logistic Regression model.
+6. Evaluated predictions using a confusion matrix and classification metrics.
+7. Performed five-fold stratified cross-validation on the training portion of the dataset, applying preprocessing independently within each fold.
+
+## Test Set Results
+
+| Metric | Score |
+|---|---:|
+| Accuracy | 83.61% |
+| Precision | 80.00% |
+| Recall | 85.71% |
+| Specificity | 81.82% |
+| F1-Score | 82.76% |
+
+The model correctly classified 51 of the 61 test observations.
+
+## Five-Fold Cross-Validation Results
+
+| Metric | Mean | Standard Deviation |
+|---|---:|---:|
+| Accuracy | 80.53% | 4.58 percentage points |
+| Precision | 81.56% | 5.73 percentage points |
+| Recall | 74.86% | 6.28 percentage points |
+| Specificity | 85.38% | 5.01 percentage points |
+| F1-Score | 77.97% | 5.18 percentage points |
+
+The variation across validation folds demonstrates why model performance should be assessed using more than one data split.
+
+## Visualisations
+
+### Confusion Matrix
+
+![Confusion Matrix](outputs/confusion_matrix.png)
+
+### Model Performance
+
+![Model Performance](outputs/model_performance.png)
+
+## Technologies and Tools
+
+- **R:** Data processing, model development, and statistical evaluation
+- **RStudio:** Development environment
+- **ggplot2:** Model performance visualisations
+- **Base R:** Logistic Regression, preprocessing, confusion matrix calculations, and cross-validation
+
+## Running the Project
+
+1. Install R and RStudio.
+2. Download or clone this repository.
+3. Open `heart-disease-prediction.Rproj` in RStudio.
+4. Place the dataset at `data/heart_disease.csv` if it is not included in the repository.
+5. Run the scripts in this order:
+
+   - `scripts/heart_disease_model.R`
+   - `scripts/model_validation.R`
+   - `scripts/model_visualizations.R`
+
+The scripts will generate evaluation results and figures in the `outputs/` directory.
+
+The visualisation script requires the `ggplot2` package.
+
+## Limitations
+
+- The dataset contains only 302 observations.
+- The independent test set contains 61 observations, so performance estimates may vary across different samples.
+- The project evaluates a Logistic Regression baseline rather than comparing multiple model families.
+- Results do not establish clinical reliability or suitability for real-world diagnosis.
+- Additional independent validation would be required before any clinical application.
+
+## Future Improvements
+
+- Evaluate ROC-AUC and precision-recall curves.
+- Compare Logistic Regression with Random Forest and Support Vector Machine classifiers.
+- Investigate feature selection and regularisation.
+- Assess model calibration and robustness using additional datasets.
+
+## Conclusion
+
+This project demonstrates the implementation and evaluation of a binary classification model using R. It highlights the importance of correctly encoding categorical features, preventing preprocessing leakage, and using cross-validation to assess predictive performance.
+
+The final model achieved 83.61% test accuracy and 80.53% mean cross-validation accuracy, providing a useful baseline for further experimentation.
